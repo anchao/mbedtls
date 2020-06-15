@@ -5,6 +5,7 @@
 
 config LIB_MBEDTLS
 	bool "The mbed tls library support"
+	select DEV_URANDOM
 	default n
 	---help---
 		Enable support for the mbed tls library
