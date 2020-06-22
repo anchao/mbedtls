@@ -58,7 +58,6 @@ config MBEDTLS_REMOVE_ARC4_CIPHERSUITES
 
 config MBEDTLS_NO_PLATFORM_ENTROPY
   bool "Do not use built-in platform entropy functions."
-  default y if DEV_URANDOM
   default n
   help
 
