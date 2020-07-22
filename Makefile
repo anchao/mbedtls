@@ -32,7 +32,7 @@
 #
 ############################################################################
 
--include $(TOPDIR)/Make.defs
+-include $(APPDIR)/Make.defs
 
 mbedtls_subdir = $(shell echo $(CONFIG_LIB_MBEDTLS_VERSION))
 
