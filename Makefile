@@ -34,16 +34,25 @@
 
 -include $(APPDIR)/Make.defs
 
-mbedtls_subdir = $(shell echo $(CONFIG_LIB_MBEDTLS_VERSION))
+ifneq ($(CONFIG_LIB_MBEDTLS_VERSION),)
 
-../$(mbedtls_subdir)/library/bignum.c_CFLAGS += -fno-lto
+mbedtls_ver := $(shell echo $(CONFIG_LIB_MBEDTLS_VERSION))
+mbedtls_dir := ..$(DELIM)$(mbedtls_ver)
+
+ifeq ($(wildcard $(mbedtls_dir)),)
+mbedtls_dir := .
+endif
+
+$(mbedtls_dir)/library/bignum.c_CFLAGS += -fno-lto
 
 CFLAGS += -D__unix__ -D__socklen_t_defined
 
-ifneq ($(mbedtls_subdir),master)
--include ../$(mbedtls_subdir)/NuttX.mk
+ifeq ($(mbedtls_ver),master)
+CSRCS = $(wildcard $(mbedtls_dir)/library/*.c)
 else
-CSRCS = $(wildcard ../master/library/*.c)
+-include $(mbedtls_dir)/NuttX.mk
+endif
+
 endif
 
 include $(APPDIR)/Application.mk

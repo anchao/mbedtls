@@ -32,9 +32,9 @@
 ############################################################################
 
 ifeq ($(CONFIG_LIB_MBEDTLS),y)
-CONFIGURED_APPS += $(APPDIR)/external/mbedtls/master
+CONFIGURED_APPS += $(APPDIR)/external/mbedtls
 
-CFLAGS += ${shell $(INCDIR) $(INCDIROPT) "$(CC)" $(APPDIR)/external/mbedtls/$(CONFIG_LIB_MBEDTLS_VERSION)/include}
-CXXFLAGS += ${shell $(INCDIR) $(INCDIROPT) "$(CC)" $(APPDIR)/external/mbedtls/$(CONFIG_LIB_MBEDTLS_VERSION)/include}
+CFLAGS += ${shell $(INCDIR) $(INCDIROPT) "$(CC)" $(APPDIR)/external/mbedtls/include}
+CXXFLAGS += ${shell $(INCDIR) $(INCDIROPT) "$(CC)" $(APPDIR)/external/mbedtls/include}
 
 endif
